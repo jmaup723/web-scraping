@@ -37,10 +37,10 @@ def scrape():
     facts_url = "https://space-facts.com/mars/"
     tables = pd.read_html(facts_url)
     facts_df = tables[2]
-    facts_df.columns = ['item', 'value']
-    facts_df = mars_facts_df.set_index('item')
-    facts = mars_facts_df.to_dict()
-    facts = mars_facts["value"]
+    facts_df.columns = ['fact', 'fact_value']
+    facts_df = facts_df.set_index('fact')
+    facts = facts_df.to_dict()
+    facts = facts["fact_value"]
 
     executable_path = {'executable_path': 'chromedriver.exe'}
     browser = Browser('chrome', **executable_path, headless=False)
@@ -64,10 +64,10 @@ def scrape():
     browser.quit()
 
     data = {
-        "news_title": news_title,
+        "news_title": title1,
         "news_p": news_p,
         "featured_image_url": featured_image_url,
         "mars_weather": mars_weather,
         "hemisphere_image_urls": hemisphere_image_urls,
-        "mars_facts": mars_facts}
+        "facts": facts}
     return data
