@@ -4,9 +4,9 @@ import time
 import pandas as pd
 import requests
 
-def scrape():
+def scrape_info():
     news_url = "https://mars.nasa.gov/news/?page=0&per_page=40&order=publish_date+desc%2Ccreated_at+desc&search=&category=19%2C165%2C184%2C204&blank_scope=Latest"
-    response = requests.get(nasa_mars_news_url)
+    response = requests.get(news_url)
     soup = bs(response.text, "html.parser")
     title1 = soup.find('div', class_ = 'content_title').text.strip()
     news_p = soup.find('div', class_="rollover_description_inner").text.strip()
@@ -49,7 +49,7 @@ def scrape():
     time.sleep(3)
     mars_hemisphere = ["Cerberus Hemisphere", "Schiaparelli Hemisphere", "Syrtis Major Hemisphere", "Valles Marineris Hemisphere"]
     hemisphere_image_urls = []
-    for hemisphere in mars_hemispheres:
+    for hemisphere in mars_hemisphere:
         time.sleep(3)
         browser.click_link_by_partial_text(hemisphere)
         html = browser.html

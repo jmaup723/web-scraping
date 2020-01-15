@@ -47,33 +47,15 @@
         </div>
         <div class = 'row p-2'>
             <div class = 'col-lg-6'>
-                <figure class="figure border p-2">
-                    <img src={{data.hemisphere_image_urls[0].img_url}} class="figure-img img-fluid rounded" width='100%' alt="{{data.hemisphere_image_urls[0].title}}">
-                    <figcaption class="figure-caption">{{data.hemisphere_image_urls[0].title}}</figcaption>
-                </figure>
-            </div>
-            <div class = 'col-lg-6'>
-                <figure class="figure border p-2">
-                    <img src={{data.hemisphere_image_urls[1].img_url}} class="figure-img img-fluid rounded" width='100%' alt="{{data.hemisphere_image_urls[1].title}}">
-                    <figcaption class="figure-caption">{{data.hemisphere_image_urls[1].title}}</figcaption>
-                </figure>
-            </div>
-        </div>
-        <div class = 'row p-2'>
-            <div class = 'col-lg-6'>
-                <figure class="figure border p-2">
-                    <img src={{data.hemisphere_image_urls[2].img_url}} class="figure-img img-fluid rounded" width='100%' alt="{{data.hemisphere_image_urls[2].title}}">
-                    <figcaption class="figure-caption">{{data.hemisphere_image_urls[2].title}}</figcaption>
-                </figure>
-            </div>
-            <div class = 'col-lg-6'>
-                <figure class="figure border p-2">
-                    <img src={{data.hemisphere_image_urls[3].img_url}} class="figure-img img-fluid rounded" width='100%' alt="{{data.hemisphere_image_urls[3].title}}">
-                    <figcaption class="figure-caption">{{data.hemisphere_image_urls[3].title}}</figcaption>
-                </figure>
+                {% for url in data.hemisphere_image_urls %}
+                <div class = 'col-lg-6'>
+                    <figure class="figure border p-2">
+                        <img src={{url.img_url or ''}} class="figure-img img-fluid rounded" width='100%' >
+                    </figure>
+                </div>
+                {% endfor %}
             </div>
         </div>
     </div>
 </body>
-
 </html>
